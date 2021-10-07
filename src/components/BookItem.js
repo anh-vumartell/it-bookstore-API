@@ -1,18 +1,16 @@
 import React from "react";
-
+import classes from "./BookItem.module.css";
 function BookItem(props) {
   return (
-    <div>
-      <li>
-        <header className="book-header">
-          <h2>{props.title}</h2>
-          <h3>{props.subtitle}</h3>
-        </header>
-        <span className="price-tag">{props.price}</span>
+    <li className={classes["book-item"]}>
+      <div className={classes["book-header"]}>
+        <h3>{props.title}</h3>
+        <h4>{props.subtitle}</h4>
+      </div>
+      <span className={classes["price-tag"]}>{props.price}</span>
 
-        <img className="book-image" src={props.image} alt="book_img" />
-      </li>
-    </div>
+      <img className={classes["book-image"]} src={props.image} alt="book_img" />
+    </li>
   );
 }
 

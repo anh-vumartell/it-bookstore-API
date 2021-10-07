@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300;400;500&display=swap");
+:root {
+  --primary-color: #020409;
+  --secondary-color: #0f1b3d;
+  --neutral-color: #1d2c67;
+
+  --primary-font-color: #0c122c;
+  --secondary-font-color: #d6d4fa;
+}
 body {
   margin: 0;
   font-family: "Fira Sans Extra Condensed", sans-serif;

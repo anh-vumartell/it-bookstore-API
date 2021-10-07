@@ -1,14 +1,20 @@
 import "../src/styles/App.css";
 import React, { useState, useEffect, useRef } from "react";
-import BookItem from "./components/BookItem";
+import Header from "./UI/Header";
+import Hero from "./components/Hero";
+import Modal from "./UI/Modal";
 import BookList from "./components/BookList";
-import PageContainer from "./components/PageContainer";
+
+import LoadingSpin from "./UI/LoadingSpin";
+import SubcribeForm from "./components/SubcribeForm";
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("");
   const inputRef = useRef("");
+
+  const [isShown, setIsShown] = useState(false);
 
   //input handler
   const inputHandler = (e) => {
@@ -16,6 +22,7 @@ function App() {
     setInput(inputRef.current.value);
   };
   // console.log(input);
+
   //fetch API every render
   useEffect(() => {
     const fetchBooks = async () => {
@@ -30,34 +37,32 @@ function App() {
     fetchBooks();
   }, [input]);
   console.log(books);
+
+  //toggle modal handler
+  const openModal = () => {
+    setIsShown((prevIsShown) => !prevIsShown);
+  };
+  const closeModal = () => {
+    setIsShown((prevIsShown) => !prevIsShown);
+  };
   return (
-    <PageContainer>
-      <div className="grid">
-        <form className="form-control" onSubmit={inputHandler}>
-          <input
-            ref={inputRef}
-            placeholder="Search over 1000+ books (e.g: mongodb)"
-          />
-          <button type="submit">Search</button>
-        </form>
-        <div>{isLoading ? <div className="loading-spin"></div> : ""}</div>
-        <BookList>
-          {books
-            ? books.map((book, i) => {
-                return (
-                  <BookItem
-                    key={i + 1}
-                    title={book.title}
-                    subtitle={book.subtitle}
-                    price={book.price}
-                    image={book.image}
-                  />
-                );
-              })
-            : ""}
-        </BookList>
-      </div>
-    </PageContainer>
+    <>
+      {isShown && <Modal onClose={closeModal} />}
+      <Header onOpen={openModal} />
+      <Hero />
+      <form className="form-control">
+        <input
+          onChange={inputHandler}
+          ref={inputRef}
+          placeholder="Search over 1000+ books (e.g: mongodb)"
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      {isLoading ? <LoadingSpin /> : ""}
+      <BookList books={books}></BookList>
+      <SubcribeForm />
+    </>
   );
 }
 
