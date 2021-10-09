@@ -1,41 +1,54 @@
 .form-subcribe {
-  color: var(--secondary-font-color);
+  color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-font-color);
+  background-color: #fff;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
   margin: 5rem 2rem;
   padding: 0 1rem;
-  height: 27rem;
+  height: 30rem;
   position: relative;
 }
 .form-subcribe .form-header {
   text-align: center;
+  width: 100%;
 }
 .form-control {
   position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin: 1rem;
 }
 .form-control label,
 .form-control input {
   display: block;
+  width: 100%;
 }
 .form-control label {
   font-weight: bold;
-  margin: 0.5rem;
-  text-align: left;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
 }
 .form-control input {
   font: inherit;
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid #ccc;
-  width: 19.5rem;
-  max-width: 100%;
-  margin: 0 0.5rem;
+  width: 100%;
+  height: 2rem;
 }
 .form-control input:focus {
   outline: none;
+}
+
+.form-control input::placeholder {
+  text-align: right;
 }
 .form-subcribe button {
   width: 10rem;
@@ -53,7 +66,9 @@
 .form-subcribe button:active,
 .form-subcribe button:hover {
   background-color: #fff;
+  border: 2px solid var(--primary-color);
   color: var(--primary-font-color);
+  transform: translateY(-0.4rem);
 }
 
 /* .form-subcribe button:disabled,
@@ -68,6 +83,6 @@
 .form-control span {
   color: red;
   position: absolute;
-  top: 2.7rem;
-  right: 1rem;
+  top: 5rem;
+  right: -0.2rem;
 }
